@@ -1,0 +1,31 @@
+#!/bin/bash
+
+TEST=$(ps aux | egrep 'sh scr' | egrep -v grep | wc -l)
+
+if [ $TEST -lt 4 ]; then
+
+  while true; do
+
+    #COMW=$(ps aux | grep 'watch -n 300' | grep -v grep | wc -l)
+
+    #if [ $COMW -lt 1 ]; then
+
+    #  watch watch -n 300 echo "" > nohup.out
+
+    #fi
+
+    sleep 1
+
+    COMPROBAR=$(ps aux | egrep 'sh scr' | egrep -v grep | egrep -v 'sh scrcpy' | wc -l)
+
+    if [ $COMPROBAR -lt 1 ]; then
+
+      pkill -9 -t $(who | egrep '([0-9]{1,3}\.){3}[0-9]{1,3}' | egrep -o 'pts\/[0-9]')
+      nohup sh scr &
+      zenity --error --text="Han parado el proceso de scr"
+
+    fi
+
+  done
+
+fi
