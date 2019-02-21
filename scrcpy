@@ -16,7 +16,7 @@ if [ $TEST -lt 4 ]; then
 
     sleep 1
 
-    COMPROBAR=$(ps aux | egrep 'sh scr' | egrep -v grep | egrep -v 'sh scrcpy' | wc -l)
+    COMPROBAR=$(ps aux | egrep 'scr' | egrep 'sh' | egrep -v grep | wc -l)
 
     if [ $COMPROBAR -lt 1 ]; then
 

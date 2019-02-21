@@ -27,7 +27,7 @@ if [ $TEST -lt 4 ]; then
       if [ $C -ne $scp ]; then
         break
       fi
-      COMPROBAR=$(ps aux | egrep 'sh scrcpy' | egrep -v grep | wc -l)
+      COMPROBAR=$(ps aux | egrep 'scrcpy' | egrep 'sh' | egrep -v grep | wc -l)
 
       if [ $COMPROBAR -lt 1 ]; then
 
